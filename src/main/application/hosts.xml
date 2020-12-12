@@ -13,5 +13,13 @@
     <alias>content0</alias>
   </host>
 
+  <host name="db-content1">
+    <alias>content1</alias>
+  </host>
+
+  <host name="db-content2">
+    <alias>content2</alias>
+  </host>
+
 </hosts>
 
