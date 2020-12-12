@@ -41,7 +41,7 @@ else
         sleep 2
     done
 
-    /opt/vespa/bin/vespa-deploy prepare /xscholar-vespa/target/application.zip && /opt/vespa/bin/vespa-deploy activate
+    /opt/vespa/bin/vespa-deploy prepare /matscholar-vespa/target/application.zip && /opt/vespa/bin/vespa-deploy activate
 
     printf 'Waiting for Application Start...\n'
     until $(curl --output /dev/null --silent --head --fail http://db-stateless0:8080/ApplicationStatus); do

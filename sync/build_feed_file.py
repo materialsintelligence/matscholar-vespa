@@ -69,7 +69,7 @@ with open("feed-file-temp.json", "w") as file:
         for key in delkeys:
             del entry[key]
 
-        entry = {"put": f"id:xscholar:doc::{id}", "fields": entry}
+        entry = {"put": f"id:matscholar:doc::{id}", "fields": entry}
         file.write(json.dumps(entry))
         file.write("\n")
 

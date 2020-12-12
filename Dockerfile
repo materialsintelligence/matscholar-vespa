@@ -14,7 +14,7 @@ RUN yum install -y vespa && \
 EXPOSE 8080
 EXPOSE 19092
 
-COPY xscholar-vespa /xscholar-vespa
+COPY matscholar-vespa /matscholar-vespa
 
 ADD start-container.sh /usr/local/bin/start-container.sh
 RUN chmod +x /usr/local/bin/start-container.sh

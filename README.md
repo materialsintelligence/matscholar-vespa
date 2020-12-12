@@ -1,4 +1,4 @@
-# XScholar - Abstract Search
+# matscholar - Abstract Search
 
 A simple Vespa application which can be deployed on four nodes within a [Spin application](https://www.nersc.gov/systems/spin/) for text search on a database of research paper abstracts.
 
@@ -10,7 +10,7 @@ For this stack we will need 4 servies:
 * app-linux: Service for data transfer
 
 ### app-linux configuration
-Set up this node to use the docker image at `registry.nersc.gov/m3624/app-linux:<MOST RECENT TAG>`. This image is a basic linux image with tools you might need, including git, curl, vim, etc. There is no need to configure any other parameters for this service. Create a new NFS volume and name it db-xscholar (e.g. new peristant volume). Mount it as:
+Set up this node to use the docker image at `registry.nersc.gov/m3624/app-linux:<MOST RECENT TAG>`. This image is a basic linux image with tools you might need, including git, curl, vim, etc. There is no need to configure any other parameters for this service. Create a new NFS volume and name it db-matscholar (e.g. new peristant volume). Mount it as:
 * `/nfs` to `data`
 
 Mount a CFS directory you want to use as a data transfer directory at `/cfs` and leave the sub-path in the volume empty. **Ensure that the "read-only" box is checked.** 
@@ -32,7 +32,7 @@ Set this node up Set up this node to use the docker image at `vespaengine/vespa`
 * `/opt/vespa/logs` to `content0/vespa/logs`
 
 #### Note on adding content nodes:
-For redundency/performance you can increase the number of content nodes (e.g. db-content1, db-content2, ...) See [Vespa docs](https://docs.vespa.ai/documentation/performance/sizing-search.html) to determine the setup you need. If you add more content nodes, modify [hosts.xml](https://github.com/lbnlp/xscholar-vespa/blob/main/src/main/application/hosts.xml) and [services.xml](https://github.com/lbnlp/xscholar-vespa/blob/main/src/main/application/services.xml) accordingly. 
+For redundency/performance you can increase the number of content nodes (e.g. db-content1, db-content2, ...) See [Vespa docs](https://docs.vespa.ai/documentation/performance/sizing-search.html) to determine the setup you need. If you add more content nodes, modify [hosts.xml](https://github.com/materialsintelligence/matscholar-vespa/blob/main/src/main/application/hosts.xml) and [services.xml](https://github.com/materialsintelligence/matscholar-vespa/blob/main/src/main/application/services.xml) accordingly. 
 
 
 ## Starting up the Vespa cluster
@@ -44,8 +44,8 @@ $ export VESPA_HOME=/opt/vespa; export PATH=$PATH:$VESPA_HOME/bin
 
 Clone this repository onto the node and navigate to the new directory. 
 ```
-$ git clone https://github.com/lbnlp/xscholar-vespa.git
-$ cd xscholar-vespa
+$ git clone https://github.com/materialsintelligence/matscholar-vespa.git
+$ cd matscholar-vespa
 ```
 
 Finally, deploy the vespa application. 
@@ -61,7 +61,7 @@ If your application is properly configured, you should recieve a `200 OK` respon
 
 ## Feeding data to Vespa
 (note, this procedure will change in coming weeks and all data feeding will take place on the app-linux node.) 
-You can feed data to your new Vespa DB thorough the feeding API. Create a json file in which each line is a document to be fed into the database. See [examples/data/feed-file.json](https://github.com/lbnlp/xscholar-vespa/blob/main/examples/data/feed-file.json) for an example feed file. Copy this feed file to your transfer directory on the NERSC community file system, and use the app-linux node to copy it to the NFS data directory. On the db-stateless0 node, run the following: 
+You can feed data to your new Vespa DB thorough the feeding API. Create a json file in which each line is a document to be fed into the database. See [examples/data/feed-file.json](https://github.com/materialsintelligence/matscholar-vespa/blob/main/examples/data/feed-file.json) for an example feed file. Copy this feed file to your transfer directory on the NERSC community file system, and use the app-linux node to copy it to the NFS data directory. On the db-stateless0 node, run the following: 
 
 ```
 $ java -jar /opt/vespa/lib/jars/vespa-http-client-jar-with-dependencies.jar \
