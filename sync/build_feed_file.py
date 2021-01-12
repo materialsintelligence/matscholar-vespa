@@ -1,7 +1,7 @@
 import os
 import pymongo
 import json
-import sys
+from tqdm import tqdm
 from datetime import datetime, timedelta
 
 client = pymongo.MongoClient(os.getenv("MATSCHOLAR_PROD_HOST"),
@@ -18,7 +18,7 @@ db = client[os.getenv("MATSCHOLAR_PROD_DB")]
 # else:
 #     entries = db.entries_vespa_upload.find({"synced": False})
 
-entries = db.entries_entities.find({}).limit(10000)
+entries = db.entries_entities.find({})
 
 key_dict = {"MAT": "materials",
             "SPL": "phase_labels",
@@ -32,7 +32,7 @@ key_dict = {"MAT": "materials",
 
 with open("feed-file-temp.json", "w") as file:
     ids = []
-    for entry in entries:
+    for entry in tqdm(entries, total=entries.count()):
         if not "year" in entry:
             # 5 documents in db don't have a year. Manually checked and they all are from 2016
             entry["year"] = "2016"
