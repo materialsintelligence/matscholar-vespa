@@ -61,10 +61,12 @@ with open("feed-file-temp.json", "w") as file:
 
         entry["year"] = str(entry["year"])
 
-        # entry["journal"] = db.entries.find_one({"doi": entry["doi"]}).get("journal", "")
-        # if isinstance(entry["journal"], list):
-        #     entry["journal"] = entry["journal"][0]
-        entry["journal"] = "Journal Placeholder"
+        entry["journal"] = db.entries.find_one({"doi": entry["doi"]}).get("journal", "")
+        if isinstance(entry["journal"], list):
+            entry["journal"] = entry["journal"][0]
+        elif not len(entry["journal"]):
+            # TODO: write script to repair journals
+            entry["journal"] = "Unknown"
 
         for key in delkeys:
             del entry[key]
