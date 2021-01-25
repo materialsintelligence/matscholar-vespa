@@ -55,9 +55,13 @@ $ java -jar /opt/vespa/lib/jars/vespa-http-client-jar-with-dependencies.jar \
 ```
 
 ## Query the database
+Use the Query API to [search](https://docs.vespa.ai/documentation/querying-vespa.html).
 On any node in your cluster, run the following: 
 ```
 $ curl -H "Content-Type: application/json" --data '{"yql" : "select * from sources * where default contains \"thermoelectric materials\";"}' http://db-stateless0:8080/search/
 ```
 
-
+### Query entities
+```
+curl -H "Content-Type: application/json" --data '{"yql" : "select * from sources * where materials = TiO2;"}' http://db-stateless0:8080/search/
+```
