@@ -33,7 +33,7 @@ if not os.path.exists('feed_files'):
 
 for year in range(2019, 1900, -1):
     print("Building feed file for ", year, "...")
-    entries = db.entries_entities.find({'year': year})
+    entries = db.entries_entities.find({ "$or": [ {'year': str(year)}, {'year': int(year)} ] })
     if entries.count():
         with open(f"feed_files/feed-file-temp-{year}.json", "w") as file:
             ids = []
