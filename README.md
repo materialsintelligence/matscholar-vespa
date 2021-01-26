@@ -50,8 +50,7 @@ If your application is properly configured, you should recieve a `200 OK` respon
 The db-admin0 node setup automatically tries to feed data from the NFS directory via "feed-file.json". You can manually feed data to your new Vespa DB though the feeding API. Create a json file in which each line is a document to be fed into the database. See [examples/data/feed-file.json](https://github.com/lbnlp/xscholar-vespa/blob/main/examples/data/feed-file.json) for an example feed file. Copy this feed file to your transfer directory on the NERSC community file system, and use the app-linux node to copy it to the NFS data directory. On the db-stateless0 node, run the following: 
 
 ```
-$ java -jar /opt/vespa/lib/jars/vespa-http-client-jar-with-dependencies.jar \
-    --file nfs/feed-file.json --endpoint http://db-stateless0:8080 --verbose --useCompression
+$ java -jar /opt/vespa/lib/jars/vespa-http-client-jar-with-dependencies.jar --file nfs/feed-file.json --endpoint http://db-stateless0:8080 --verbose --useCompression
 ```
 
 ## Query the database
