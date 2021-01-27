@@ -12,6 +12,11 @@ schema doc {
             attribute:fast-search
         }
 
+        struct ref {
+            field id type string {}
+            field doi type string {}
+        }
+
         field title type string {
             bolding: true
             indexing: summary|index
@@ -40,10 +45,32 @@ schema doc {
             index: enable-bm25
         }
 
+        field body_text type string {
+            indexing: summary|index
+            index: enable-bm25
+            summary: dynamic
+        }
+
         field link type string {
             indexing: summary|attribute
             attribute:fast-search
         }
+
+        field references type array<ref> {
+              indexing: summary
+              struct-field id {indexing: attribute}
+              struct-field doi {indexing: attribute}
+        }
+
+        field cited_by type array<string> {
+              indexing: summary
+        }
+
+        field citations_count_total type int {
+              indexing: summary | attribute
+        }
+
+        field related_to type string {}
 
         field materials type array<string> {
             indexing: summary|attribute
@@ -106,6 +133,9 @@ schema doc {
         summary doi type string {source: doi}
         summary link type string {source:link}
         summary year type int {source: year}
+        summary cited_by type array<string> {source:cited_by}
+        summary references type array<ref> {source:references}
+        summary citations_count_total type int {source: citations_count_total}
         summary materials type array<string> {source: materials}
         summary materials_clean type array<string> {source: phase_labels}
         summary characterization_methods type array<string> {source: characterization_methods}
@@ -115,7 +145,36 @@ schema doc {
         summary descriptors type array<string> {source: descriptors}
         summary phase_labels type array<string> {source: phase_labels}
 
-  }
+    }
+
+    document-summary full  {
+        from-disk
+        summary title-full type string {
+          source:title
+          full
+        }
+
+        summary id type string {
+          source:id
+          full
+        }
+
+        summary abstract-full type string {
+          source: abstract
+          bolding: on
+          full
+        }
+
+        summary body_text-full type string {
+          source: body_text
+          full
+        }
+
+        summary summary_human-full type string {
+          source:summary_human
+          full
+        }
+    }
 
     rank-profile freshness inherits default {
         first-phase {

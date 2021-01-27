@@ -50,6 +50,7 @@ for year in range(2019, 1900, -1):
                 id = str(entry["_id"])
                 ids.append(entry["_id"])
                 delkeys.append("_id")
+                entry["id"] = id
 
                 if "issn" in entry:
                     delkeys.append("issn")
