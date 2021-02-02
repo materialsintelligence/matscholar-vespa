@@ -2,5 +2,5 @@
 <query-profile id="default" type="root">
  <field name="maxHits">100</field>
  <field name="maxOffset">10</field>
- <field name="timeout">6s</field>
+ <field name="timeout">10s</field>
 </query-profile>

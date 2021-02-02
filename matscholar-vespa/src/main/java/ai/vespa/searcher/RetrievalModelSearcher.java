@@ -22,7 +22,7 @@ public class RetrievalModelSearcher extends Searcher {
             return new Result(query, ErrorMessage.createBadRequest("No query input"));
 
 
-        String wandField = query.properties().getString("wand.field", "default");
+        String wandField = query.properties().getString("wand.field", "all");
         int wandHits = query.properties().getInteger("wand.hits", query.getHits());
         query.getModel().getQueryTree().setRoot(sparseRetrieval(queryInput, query, wandField, wandHits));
         int reRankHits = query.properties().getInteger("phase.count", 1000);

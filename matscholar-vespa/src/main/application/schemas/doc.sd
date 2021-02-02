@@ -25,6 +25,7 @@ schema doc {
 
         field authors type array<string> {
             indexing: summary|attribute
+            index: enable-bm25
         }
 
         field journal type string {

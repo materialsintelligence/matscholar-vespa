@@ -29,6 +29,22 @@
       <node hostalias="content0" distribution-key="0"/>
       <node hostalias="content1" distribution-key="1"/>
       <node hostalias="content2" distribution-key="2"/>
+      <node hostalias="content3" distribution-key="3"/>
+      <node hostalias="content4" distribution-key="4"/>
     </nodes>
+    <engine>
+      <proton>
+        <tuning>
+          <searchnode>
+           <requestthreads>
+            <persearch>12</persearch>
+           </requestthreads>
+           <feeding>
+            <concurrency>1.0</concurrency>
+          </feeding>
+          </searchnode>
+        </tuning>
+      </proton>
+    </engine>
   </content>
 </services>
