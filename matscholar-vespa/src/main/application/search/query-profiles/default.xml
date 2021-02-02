@@ -3,4 +3,5 @@
  <field name="maxHits">100</field>
  <field name="maxOffset">10</field>
  <field name="timeout">10s</field>
+ <field name="searchChain">docranking</field>
 </query-profile>
