@@ -12,7 +12,7 @@
     <document-api/>
     <search>
       <chain id="docranking" inherits="vespa">
-        <searcher id="ai.vespa.searcher.RetrievalModelSearcher" bundle="matscholar"/>
+        <searcher id="ai.vespa.searcher.RetrievalModelSearcher" bundle="matscholar-vespa"/>
       </chain>
     </search>
     <nodes>
