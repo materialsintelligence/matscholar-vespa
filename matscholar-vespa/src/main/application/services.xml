@@ -10,7 +10,11 @@
 
   <container id="container" version="1.0">
     <document-api/>
-    <search/>
+    <search>
+      <chain id="docranking" inherits="vespa">
+        <searcher id="ai.vespa.searcher.RetrievalModelSearcher" bundle="matscholar"/>
+      </chain>
+    </search>
     <nodes>
       <node hostalias="stateless0"/>
     </nodes>

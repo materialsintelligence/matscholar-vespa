@@ -52,6 +52,10 @@ The db-admin0 node setup automatically tries to feed data from the NFS directory
 ```
 $ java -jar /opt/vespa/lib/jars/vespa-http-client-jar-with-dependencies.jar --file nfs/feed-file.json --endpoint http://db-stateless0:8080 --verbose --useCompression
 ```
+If you have a directory of smaller feed files, you can feed those via
+```
+for f in nfs/feed-file-temp-*; do java -jar /opt/vespa/lib/jars/vespa-http-client-jar-with-dependencies.jar --file $f --endpoint http://db-stateless0:8080 --verbose --useCompression; done
+```
 
 ## Query the database
 Use the Query API to [search](https://docs.vespa.ai/documentation/querying-vespa.html).

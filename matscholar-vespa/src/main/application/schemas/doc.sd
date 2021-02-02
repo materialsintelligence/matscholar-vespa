@@ -74,34 +74,42 @@ schema doc {
 
         field materials type array<string> {
             indexing: summary|attribute
+            attribute: fast-search
         }
 
         field materials_clean type array<string> {
             indexing: summary|attribute
+            attribute: fast-search
         }
 
         field characterization_methods type array<string> {
             indexing: summary|attribute
+            attribute: fast-search
         }
 
         field properties type array<string> {
             indexing: summary|attribute
+            attribute: fast-search
         }
 
         field synthesis_methods type array<string> {
             indexing: summary|attribute
+            attribute: fast-search
         }
 
         field applications type array<string> {
             indexing: summary|attribute
+            attribute: fast-search
         }
 
         field descriptors type array<string> {
             indexing: summary|attribute
+            attribute: fast-search
         }
 
         field phase_labels type array<string> {
             indexing: summary|attribute
+            attribute: fast-search
         }
 
     }
@@ -183,6 +191,7 @@ schema doc {
     }
 
     rank-profile default inherits default {
+        num-threads-per-search: 12
         first-phase {
           expression: bm25(title) + bm25(abstract)
     }
