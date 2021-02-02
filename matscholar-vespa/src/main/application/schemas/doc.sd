@@ -172,16 +172,6 @@ schema doc {
           bolding: on
           full
         }
-
-        summary body_text-full type string {
-          source: body_text
-          full
-        }
-
-        summary summary_human-full type string {
-          source:summary_human
-          full
-        }
     }
 
     rank-profile freshness inherits default {
