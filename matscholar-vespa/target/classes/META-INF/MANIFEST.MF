@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: matscholar-vespa
+Bundle-Version: 1.0.0
+Created-By: vespa container maven plugin
+Bundle-Name: matscholar-vespa
+Bundle-Vendor: Yahoo!
+Bundle-ClassPath: .
+Import-Package: com.yahoo.prelude.query;version="[1.0.0,2)",com.yahoo.se
+ arch.query.ranking;version="[1.0.0,2)",com.yahoo.search.query;version="
+ [1.0.0,2)",com.yahoo.search.result;version="[1.0.0,2)",com.yahoo.search
+ .searchchain;version="[1.0.0,2)",com.yahoo.search;version="[1.0.0,2)",j
+ ava.lang;version="[0.0.0,1)"
+

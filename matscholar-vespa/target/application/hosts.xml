@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2017 Yahoo Holdings. Licensed under the terms of the Apache 2.0 license. See LICENSE in the project root. -->
+<hosts>
+  <host name="db-admin0">
+    <alias>admin0</alias>
+  </host>
+
+  <host name="db-stateless0">
+    <alias>stateless0</alias>
+  </host>
+
+  <host name="db-content0">
+    <alias>content0</alias>
+  </host>
+
+  <host name="db-content1">
+    <alias>content1</alias>
+  </host>
+
+  <host name="db-content2">
+    <alias>content2</alias>
+  </host>
+
+   <host name="db-content3">
+    <alias>content3</alias>
+  </host>
+
+  <host name="db-content4">
+    <alias>content4</alias>
+  </host>
+
+</hosts>
+
