@@ -22,11 +22,11 @@
   </host>
 
    <host name="db-content3">
-    <alias>content2</alias>
+    <alias>content3</alias>
   </host>
 
   <host name="db-content4">
-    <alias>content2</alias>
+    <alias>content4</alias>
   </host>
 
 </hosts>
