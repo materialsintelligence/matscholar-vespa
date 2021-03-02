@@ -83,6 +83,16 @@ schema doc {
             attribute: fast-search
         }
 
+        field chemical_system type array<string> {
+            indexing: summary|attribute
+            attribute: fast-search
+        }
+
+        field anon_formula type array<string> {
+            indexing: summary|attribute
+            attribute: fast-search
+        }
+
         field characterization_methods type array<string> {
             indexing: summary|attribute
             attribute: fast-search
@@ -146,6 +156,8 @@ schema doc {
         summary references type array<ref> {source:references}
         summary citations_count_total type int {source: citations_count_total}
         summary materials type array<string> {source: materials}
+        summary chemical_system type array<string> {source: materials}
+        summary anon_formula type array<string> {source: materials}
         summary materials_clean type array<string> {source: phase_labels}
         summary characterization_methods type array<string> {source: characterization_methods}
         summary properties type array<string> {source: properties}
