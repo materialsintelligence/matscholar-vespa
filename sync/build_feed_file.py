@@ -3,6 +3,7 @@ import pymongo
 import json
 from tqdm import tqdm
 from datetime import datetime, timedelta
+from pymatgen import Composition
 
 client = pymongo.MongoClient(os.getenv("MATSCHOLAR_PROD_HOST"),
                              username=os.getenv("MATSCHOLAR_PROD_USER"),
@@ -43,6 +44,19 @@ for year in range(2019, 1900, -1):
                     entry["year"] = "2016"
 
                 delkeys = []
+
+                chemsys = []
+                anon = []
+                if 'MAT_clean' in entry:
+                    for mat in entry["MAT_clean"]:
+                        try:
+                            comp = Composition(mat)
+                            chemsys.append("-".join(sorted([str(el) for el in comp.elements])))
+                            anon.append(comp.anonymized_formula)
+                        except:
+                            continue
+                    entry['chemical_system'] = chemsys
+                    entry['anon_formula'] = anon
 
                 if isinstance(entry["authors"], str):
                     entry["authors"] = [entry["authors"]]
