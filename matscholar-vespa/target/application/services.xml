@@ -37,7 +37,7 @@
         <tuning>
           <searchnode>
            <requestthreads>
-            <persearch>12</persearch>
+            <persearch>1</persearch>
            </requestthreads>
            <feeding>
             <concurrency>1.0</concurrency>
